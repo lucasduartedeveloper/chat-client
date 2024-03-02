@@ -1,6 +1,8 @@
 FROM php:8.0-apache
 # FROM nginx-php-fpm:1.9.1
 
+RUN docker-php-ext-install pdo pdo_mysql
+
 COPY . .
 RUN ls
 
