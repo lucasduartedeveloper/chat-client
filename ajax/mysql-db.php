@@ -28,8 +28,7 @@ catch (PDOException $e) {
 die('Connection failed: ' . $e->getMessage());
 }
 
-$action = isset($_POST["action"]) ? 
-$_POST["action"] : "list";
+$action = isset($_POST["action"]) ? $_POST["action"] : "list";
 
 if ($action == "include") {
     $text = $_POST["text"];
