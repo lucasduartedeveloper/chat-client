@@ -28,9 +28,10 @@ catch (PDOException $e) {
 die('Connection failed: ' . $e->getMessage());
 }
 
-$action = $_POST["action"];
+$action = isset($_POST["action"]) ? 
+$_POST["action"] : "list";
 
-if (isset($_POST["action"]) && $action == "include") {
+if ($action == "include") {
     $text = $_POST["text"];
 
     $sql = "INSERT INTO `message` (
