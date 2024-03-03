@@ -173,7 +173,8 @@ var drawHistory = function(arr) {
         //messageView.style.position = "absolute";
         messageView.style.background = "#fff";
         messageView.style.textWrap = "wrap";
-        messageView.innerHTML = "<b>Message No. "+
+        messageView.innerHTML = 
+        "<b style=\"font-size:10px\">Message No. "+
         (n+1).toString().padStart(3, "0")+":&nbsp;</b><br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
