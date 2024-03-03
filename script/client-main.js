@@ -91,10 +91,10 @@ $(document).ready(function() {
 
     sendLeftView = document.createElement("button");
     sendLeftView.style.position = "absolute";
-    sendLeftView.innerText = "SEND LEFT";
+    sendLeftView.innerText = "SEND";
     sendLeftView.style.left = ((sw/3)*2)+"px";
     sendLeftView.style.top = (sh-50)+"px";
-    sendLeftView.style.width = ((sw/3)/2)+"px";
+    sendLeftView.style.width = (sw/3)+"px";
     sendLeftView.style.height = (50)+"px";
     sendLeftView.style.zIndex = "15";
     document.body.appendChild(sendLeftView);
@@ -107,7 +107,7 @@ $(document).ready(function() {
     sendRightView.style.width = ((sw/3)/2)+"px";
     sendRightView.style.height = (50)+"px";
     sendRightView.style.zIndex = "15";
-    document.body.appendChild(sendRightView);
+    //document.body.appendChild(sendRightView);
 
     sendLeftView.onclick = function() {
         var from = playerId;
