@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     historyView = document.createElement("div");
     historyView.style.position = "absolute";
-    historyView.style.background = "#ccc";
+    historyView.style.background = "#336";
     historyView.style.display = "flex";
     historyView.style.flexDirection = "column";
     historyView.style.left = (0)+"px";
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
     sendLeftView = document.createElement("button");
     sendLeftView.style.position = "absolute";
-    sendLeftView.innerText = "LEFT";
+    sendLeftView.innerText = "SEND LEFT";
     sendLeftView.style.left = ((sw/3)*2)+"px";
     sendLeftView.style.top = (sh-50)+"px";
     sendLeftView.style.width = ((sw/3)/2)+"px";
@@ -100,7 +100,7 @@ $(document).ready(function() {
 
     sendRightView = document.createElement("button");
     sendRightView.style.position = "absolute";
-    sendRightView.innerText = "RIGHT";
+    sendRightView.innerText = "SEND RIGHT";
     sendRightView.style.left = (((sw/3)*2)+((sw/3)/2))+"px";
     sendRightView.style.top = (sh-50)+"px";
     sendRightView.style.width = ((sw/3)/2)+"px";
