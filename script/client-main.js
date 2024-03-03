@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     historyView = document.createElement("div");
     historyView.style.position = "absolute";
-    historyView.style.background = "#336";
+    historyView.style.background = "#ccc";
     historyView.style.display = "flex";
     historyView.style.flexDirection = "column";
     historyView.style.left = (0)+"px";
