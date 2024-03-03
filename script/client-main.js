@@ -102,7 +102,9 @@ $(document).ready(function() {
         var from = playerId;
         var text = textView.value;
 
-        if (text != "clear")
+        if (text == "eruda")
+        eruda.init();
+        else if (text != "clear")
         send(from, text);
         else 
         clearHistory();
