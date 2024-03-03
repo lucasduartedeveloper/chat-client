@@ -88,24 +88,48 @@ $(document).ready(function() {
     textView.style.zIndex = "15";
     document.body.appendChild(textView);
 
-    sendView = document.createElement("button");
-    sendView.style.position = "absolute";
-    sendView.innerText = "SEND";
-    sendView.style.left = ((sw/3)*2)+"px";
-    sendView.style.top = (sh-50)+"px";
-    sendView.style.width = (sw/3)+"px";
-    sendView.style.height = (50)+"px";
-    sendView.style.zIndex = "15";
-    document.body.appendChild(sendView);
+    sendLeftView = document.createElement("button");
+    sendLeftView.style.position = "absolute";
+    sendLeftView.innerText = "LEFT";
+    sendLeftView.style.left = ((sw/3)*2)+"px";
+    sendLeftView.style.top = (sh-50)+"px";
+    sendLeftView.style.width = ((sw/3)/2)+"px";
+    sendLeftView.style.height = (50)+"px";
+    sendLeftView.style.zIndex = "15";
+    document.body.appendChild(sendLeftView);
 
-    sendView.onclick = function() {
+    sendRightView = document.createElement("button");
+    sendRightView.style.position = "absolute";
+    sendRightView.innerText = "RIGHT";
+    sendRightView.style.left = (((sw/3)*2)+((sw/3)/2))+"px";
+    sendRightView.style.top = (sh-50)+"px";
+    sendRightView.style.width = ((sw/3)/2)+"px";
+    sendRightView.style.height = (50)+"px";
+    sendRightView.style.zIndex = "15";
+    document.body.appendChild(sendRightView);
+
+    sendLeftView.onclick = function() {
         var from = playerId;
         var text = textView.value;
 
         if (text == "eruda")
         eruda.init();
         else if (text != "clear")
-        send(from, text);
+        send("left", text);
+        else 
+        clearHistory();
+
+        textView.value = "";
+    };
+
+    sendRightView.onclick = function() {
+        var from = playerId;
+        var text = textView.value;
+
+        if (text == "eruda")
+        eruda.init();
+        else if (text != "clear")
+        send("right", text);
         else 
         clearHistory();
 
@@ -141,12 +165,13 @@ var loadHistory = function() {
     }});
 };
 
-var uploadMessage = function(text) {
+var uploadMessage = function(from, text) {
     $.ajax({
         url: "ajax/mysql-db.php",
         type: "POST",
         data: { 
             action: "include",
+            from: from,
             text: text
         },
         success: function(data) {
@@ -174,6 +199,8 @@ var drawHistory = function(arr) {
         var messageView = document.createElement("span");
         //messageView.style.position = "absolute";
         messageView.style.background = "#fff";
+        messageView.style.textAlign = arr[n].source == "left" ? 
+        "left" : "right";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
         "<b style=\"font-size:10px\">Message No. "+
@@ -191,7 +218,7 @@ var drawHistory = function(arr) {
 };
 
 var send = function(from, text) {
-    uploadMessage(text);
+    uploadMessage(from, text);
 };
 
 var visibilityChange;

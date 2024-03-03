@@ -31,15 +31,19 @@ die('Connection failed: ' . $e->getMessage());
 $action = isset($_POST["action"]) ? $_POST["action"] : "list";
 
 if ($action == "include") {
+    $from = $_POST["from"];
     $text = $_POST["text"];
 
     $sql = "INSERT INTO `message` (
+        `source`,
         `text`
      ) VALUES (
+        '[source]',
         '[text]'
      );";
      //echo $sql;
 
+     $sql = str_replace("[source]", $from, $sql);
      $sql = str_replace("[text]", $text, $sql);
 
      $stmt = $pdo->prepare($sql);
@@ -55,7 +59,7 @@ else if ($action == "clear") {
      echo $sql;
 } 
 else {
-    $sql = "SELECT id, text, timestamp FROM `message`;";
+    $sql = "SELECT id, source, text, timestamp FROM `message`;";
 
     try{
     $stmt = $pdo->prepare($sql);
