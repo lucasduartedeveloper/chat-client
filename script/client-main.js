@@ -77,13 +77,25 @@ $(document).ready(function() {
     historyView.style.zIndex = "15";
     document.body.appendChild(historyView);
 
+    sourceView = document.createElement("input");
+    sourceView.style.position = "absolute";
+    sourceView.type = "text";
+    sourceView.placeholder = "Name...";
+    sourceView.style.left = (0)+"px";
+    sourceView.style.top = (sh-50)+"px";
+    sourceView.style.width = (sw/3)+"px";
+    sourceView.style.height = (50)+"px";
+    sourceView.style.border = "1px solid #000";
+    sourceView.style.zIndex = "15";
+    document.body.appendChild(sourceView);
+
     textView = document.createElement("input");
     textView.style.position = "absolute";
     textView.type = "text";
     textView.placeholder = "Your text here...";
-    textView.style.left = (0)+"px";
+    textView.style.left = (sw/3)+"px";
     textView.style.top = (sh-50)+"px";
-    textView.style.width = ((sw/3)*2)+"px";
+    textView.style.width = ((sw/3)+((sw/3)/2))+"px";
     textView.style.height = (50)+"px";
     textView.style.border = "1px solid #000";
     textView.style.zIndex = "15";
@@ -92,9 +104,9 @@ $(document).ready(function() {
     sendLeftView = document.createElement("button");
     sendLeftView.style.position = "absolute";
     sendLeftView.innerText = "SEND";
-    sendLeftView.style.left = ((sw/3)*2)+"px";
+    sendLeftView.style.left = (((sw/3)*2)+((sw/3)/2))+"px";
     sendLeftView.style.top = (sh-50)+"px";
-    sendLeftView.style.width = (sw/3)+"px";
+    sendLeftView.style.width = ((sw/3)/2)+"px";
     sendLeftView.style.height = (50)+"px";
     sendLeftView.style.zIndex = "15";
     document.body.appendChild(sendLeftView);
@@ -110,13 +122,15 @@ $(document).ready(function() {
     //document.body.appendChild(sendRightView);
 
     sendLeftView.onclick = function() {
-        var from = playerId;
+        var from = sourceView.value;
         var text = textView.value;
+
+        if (from.length < 3) return;
 
         if (text == "eruda")
         eruda.init();
         else if (text != "clear")
-        send("left", text);
+        send(from, text);
         else 
         clearHistory();
 
@@ -200,12 +214,10 @@ var drawHistory = function(arr) {
         var messageView = document.createElement("span");
         //messageView.style.position = "absolute";
         messageView.style.background = "#fff";
-        messageView.style.textAlign = arr[n].source == "left" ? 
-        "left" : "right";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
-        "<b style=\"font-size:10px\">Message No. "+
-        (n+1).toString().padStart(3, "0")+":&nbsp;</b><br>"+arr[n].text;
+        "<b style=\"font-size:10px\"> "+arr[n].source+
+        ":&nbsp;</b><br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
         messageView.style.padding = "10px";
