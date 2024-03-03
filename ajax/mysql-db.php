@@ -46,6 +46,14 @@ if ($action == "include") {
      $stmt->execute();
      echo $sql;
 } 
+else if ($action == "clear") {
+     $sql = "DELETE FROM `message`;";
+     //echo $sql;
+
+     $stmt = $pdo->prepare($sql);
+     $stmt->execute();
+     echo $sql;
+} 
 else {
     $sql = "SELECT id, text, timestamp FROM `message`;";
 

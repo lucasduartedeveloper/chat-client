@@ -102,9 +102,18 @@ $(document).ready(function() {
         var from = playerId;
         var text = textView.value;
 
+        if (text != "clear")
         send(from, text);
+        else 
+        clearHistory();
+
         textView.value = "";
     };
+
+    $.ajax({
+        url: "https://websocket-sv.onrender.com/",
+        type: "GET"
+    });
 
     ws.onmessage = function(e) {
         var msg = e.data.split("|");
@@ -144,6 +153,19 @@ var uploadMessage = function(text) {
     }});
 };
 
+var clearHistory = function() {
+    $.ajax({
+        url: "ajax/mysql-db.php",
+        type: "POST",
+        data: { 
+            action: "clear",
+        },
+        success: function(data) {
+            ws.send("PAPER|"+playerId+"|update");
+            loadHistory();
+    }});
+};
+
 var drawHistory = function(arr) {
     historyView.innerHTML = "";
     for (var n = 0; n < arr.length; n++) {
@@ -152,7 +174,7 @@ var drawHistory = function(arr) {
         messageView.style.background = "#fff";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = "<b>Message No. "+
-        (n+1).toString().padStart(3, "0")+":&nbsp;</b>"+arr[n].text;
+        (n+1).toString().padStart(3, "0")+":&nbsp;</b><br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
         messageView.style.padding = "10px";
