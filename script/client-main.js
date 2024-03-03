@@ -85,6 +85,7 @@ $(document).ready(function() {
     textView.style.top = (sh-50)+"px";
     textView.style.width = ((sw/3)*2)+"px";
     textView.style.height = (50)+"px";
+    textView.style.border = "1px solid #000";
     textView.style.zIndex = "15";
     document.body.appendChild(textView);
 
