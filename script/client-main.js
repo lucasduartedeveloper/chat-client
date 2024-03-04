@@ -277,9 +277,9 @@ var drawHistory = function(arr) {
 
         var messageView = document.createElement("span");
         //messageView.style.position = "relative";
-        messageView.style.background = "#fff";
+        messageView.style.background = "#cfc";
         messageView.style.filter = 
-        "drop-shadow(3px 3px 5px #000)";
+        "drop-shadow(0px 3px 3px #000)";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
         "<b style=\"position:relative;left:-10px;top:-5px;"+
