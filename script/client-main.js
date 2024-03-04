@@ -64,11 +64,27 @@ $(document).ready(function() {
     document.body.appendChild(camera);
     cameraElem = camera;
 
+    backgroundView = document.createElement("div");
+    backgroundView.style.position = "absolute";
+    backgroundView.style.opacity = "0.3";
+    backgroundView.style.filter = "grayscale(1)";
+    backgroundView.style.background = "#ccc";
+    backgroundView.style.backgroundSize = "cover";
+    backgroundView.style.backgroundImage = 
+    "url('img/background-0.png')";
+    backgroundView.style.display = "flex";
+    backgroundView.style.flexDirection = "column";
+    backgroundView.style.left = (0)+"px";
+    backgroundView.style.top = (0)+"px";
+    backgroundView.style.width = (sw)+"px";
+    backgroundView.style.height = (sh-50)+"px";
+    backgroundView.style.overflowY = "scroll";
+    backgroundView.style.zIndex = "15";
+    document.body.appendChild(backgroundView);
+
     historyView = document.createElement("div");
     historyView.style.position = "absolute";
-    historyView.style.background = "#ccc";
-    historyView.style.backgroundSize = "cover";
-    historyView.style.backgroundImage = "url('img/background-0.png')";
+    //historyView.style.background = "#ccc";
     historyView.style.display = "flex";
     historyView.style.flexDirection = "column";
     historyView.style.left = (0)+"px";
@@ -262,6 +278,8 @@ var drawHistory = function(arr) {
         var messageView = document.createElement("span");
         //messageView.style.position = "relative";
         messageView.style.background = "#fff";
+        messageView.style.filter = 
+        "drop-shadow(3px 3px 5px #000)";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
         "<b style=\"position:relative;left:-10px;top:-5px;"+
