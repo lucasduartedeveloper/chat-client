@@ -181,7 +181,7 @@ $(document).ready(function() {
         var text = textView.value;
 
         if (from.length < 3) return;
-        if (from.replace(" ", "").length < 1) return;
+        if (text.replace(" ", "").length < 1) return;
 
         if (text == "eruda")
         eruda.init();
@@ -275,6 +275,8 @@ var getLevel = function(source) {
 var drawHistory = function(arr) {
     historyView.innerHTML = "";
     for (var n = 0; n < arr.length; n++) {
+        if (arr[n].text.replace(" ", "").length < 1) continue;
+
         var level = getLevel(arr[n].source, arr);
 
         var messageView = document.createElement("span");
