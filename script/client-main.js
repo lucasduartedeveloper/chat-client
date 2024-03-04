@@ -221,6 +221,13 @@ $(document).ready(function() {
         type: "GET"
     });
 
+    setInterval(function() {
+        $.ajax({
+            url: "https://chat-client-h3ry.onrender.com/ajax/time.php",
+            type: "GET"
+        });
+    }, 60000);
+
     ws.onmessage = function(e) {
         var msg = e.data.split("|");
         if (msg[0] == "PAPER" &&
