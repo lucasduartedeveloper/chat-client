@@ -69,6 +69,7 @@ $(document).ready(function() {
     backgroundView.style.opacity = "0.3";
     backgroundView.style.filter = "grayscale(1)";
     backgroundView.style.background = "#ccc";
+    backgroundView.style.backgroundPosition = "25%";
     backgroundView.style.backgroundSize = "cover";
     backgroundView.style.backgroundImage = 
     "url('img/background-0.png')";
