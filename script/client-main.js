@@ -67,6 +67,8 @@ $(document).ready(function() {
     historyView = document.createElement("div");
     historyView.style.position = "absolute";
     historyView.style.background = "#ccc";
+    historyView.style.backgroundSize = "cover";
+    historyView.style.backgroundImage = "url('img/background-0.png')";
     historyView.style.display = "flex";
     historyView.style.flexDirection = "column";
     historyView.style.left = (0)+"px";
@@ -206,12 +208,14 @@ $(document).ready(function() {
     //eruda.destroy();
 });
 
+var historyArr = [];
 var loadHistory = function() {
     $.ajax({
         url: "ajax/mysql-db.php",
         type: "GET",
         success: function(data) {
             var obj = JSON.parse(data);
+            historyArr = obj;
             drawHistory(obj);
     }});
 };
@@ -244,18 +248,28 @@ var clearHistory = function() {
     }});
 };
 
+var getLevel = function(source) {
+     var level = 
+     historyArr.filter((o) => { return o.source == source; }).length;
+     return level;
+};
+
 var drawHistory = function(arr) {
     historyView.innerHTML = "";
     for (var n = 0; n < arr.length; n++) {
+        var level = getLevel(arr[n].source, arr);
+
         var messageView = document.createElement("span");
-        //messageView.style.position = "absolute";
+        //messageView.style.position = "relative";
         messageView.style.background = "#fff";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
         "<b style=\"position:relative;left:-10px;top:-5px;"+
         "background:#336;color:#fff;"+
         "font-size:10px;padding:5px;\"> "+arr[n].source+
-        ":&nbsp;</b><br>"+arr[n].text;
+        ":&nbsp;</b>&nbsp;"+
+        "<span style=\"position:relative;top:-5px;"+
+        "font-size:10px;\"> Lv. "+level+"</span><br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
         messageView.style.padding = "10px";
