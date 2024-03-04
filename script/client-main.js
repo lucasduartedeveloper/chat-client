@@ -181,6 +181,7 @@ $(document).ready(function() {
         var text = textView.value;
 
         if (from.length < 3) return;
+        if (from.replace(" ", "").length < 1) return;
 
         if (text == "eruda")
         eruda.init();
