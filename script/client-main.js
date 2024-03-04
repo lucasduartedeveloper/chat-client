@@ -77,6 +77,40 @@ $(document).ready(function() {
     historyView.style.zIndex = "15";
     document.body.appendChild(historyView);
 
+    var showNameField = true;
+    nameChangeView = document.createElement("i");
+    nameChangeView.style.position = "absolute";
+    nameChangeView.style.color = "#336";
+    nameChangeView.style.textAlign = "center";
+    nameChangeView.style.fontSize = "20px";
+    nameChangeView.className = "fa-solid fa-caret-left";
+    nameChangeView.style.left = ((sw/3)-12.5)+"px";
+    nameChangeView.style.top = (sh-75)+"px";
+    nameChangeView.style.width = (25)+"px";
+    nameChangeView.style.height = (25)+"px";
+    nameChangeView.style.zIndex = "15";
+    document.body.appendChild(nameChangeView);
+
+    nameChangeView.onclick = function() {
+        showNameField = !showNameField;
+        if (showNameField) {
+            nameChangeView.className = "fa-solid fa-caret-left";
+            nameChangeView.style.left = ((sw/3)-12.5)+"px";
+            sourceView.style.display = "initial";
+
+            textView.style.left = (sw/3)+"px";
+            textView.style.width = ((sw/3)+((sw/3)/2))+"px";
+        }
+        else {
+            nameChangeView.className = "fa-solid fa-caret-right";
+            nameChangeView.style.left = (0)+"px";
+            sourceView.style.display = "none";
+
+            textView.style.left = (0)+"px";
+            textView.style.width = (((sw/3)*2)+((sw/3)/2))+"px";
+        }
+    }
+
     sourceView = document.createElement("input");
     sourceView.style.position = "absolute";
     sourceView.type = "text";
