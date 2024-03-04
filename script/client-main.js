@@ -47,6 +47,15 @@ $(document).ready(function() {
         sendText(text);
     };
 
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    if (urlParams.has("refresh")) {
+        var refreshParam = parseInt(urlParams.get("refresh"));
+        setTimeout(function() {
+            location.reload();
+        }, refreshParam);
+    }
+
     tileSize = (sw/7);
 
     camera = document.createElement("video");
