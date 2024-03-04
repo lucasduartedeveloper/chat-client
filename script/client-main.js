@@ -277,7 +277,7 @@ var drawHistory = function(arr) {
 
         var messageView = document.createElement("span");
         //messageView.style.position = "relative";
-        messageView.style.background = "#cfc";
+        messageView.style.background = "#fff";
         messageView.style.filter = 
         "drop-shadow(0px 3px 3px #000)";
         messageView.style.textWrap = "wrap";
@@ -285,9 +285,10 @@ var drawHistory = function(arr) {
         "<b style=\"position:relative;left:-10px;top:-5px;"+
         "background:#336;color:#fff;"+
         "font-size:10px;padding:5px;\"> "+arr[n].source+
-        ":&nbsp;</b>&nbsp;"+
-        "<span style=\"position:relative;top:-5px;"+
-        "font-size:10px;\"> Lv. "+level+"</span><br>"+arr[n].text;
+        ":&nbsp;</b>"+
+        //"&nbsp;<span style=\"position:relative;top:-5px;"+
+        //"font-size:10px;\"> Lv. "+level+"</span>"+
+        "<br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
         messageView.style.padding = "10px";
