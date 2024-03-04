@@ -81,11 +81,11 @@ $(document).ready(function() {
     backgroundView.style.height = (sh-50)+"px";
     backgroundView.style.overflowY = "scroll";
     backgroundView.style.zIndex = "15";
-    document.body.appendChild(backgroundView);
+    //document.body.appendChild(backgroundView);
 
     historyView = document.createElement("div");
     historyView.style.position = "absolute";
-    //historyView.style.background = "#ccc";
+    historyView.style.background = "#ccc";
     historyView.style.display = "flex";
     historyView.style.flexDirection = "column";
     historyView.style.left = (0)+"px";
