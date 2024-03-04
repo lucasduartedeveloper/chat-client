@@ -103,6 +103,8 @@ $(document).ready(function() {
 
     sendLeftView = document.createElement("button");
     sendLeftView.style.position = "absolute";
+    sendLeftView.style.background = "#336";
+    sendLeftView.style.color = "#fff";
     sendLeftView.innerText = "SEND";
     sendLeftView.style.left = (((sw/3)*2)+((sw/3)/2))+"px";
     sendLeftView.style.top = (sh-50)+"px";
@@ -167,7 +169,7 @@ $(document).ready(function() {
 
     loadHistory();
 
-    eruda.destroy();
+    //eruda.destroy();
 });
 
 var loadHistory = function() {
@@ -216,7 +218,9 @@ var drawHistory = function(arr) {
         messageView.style.background = "#fff";
         messageView.style.textWrap = "wrap";
         messageView.innerHTML = 
-        "<b style=\"font-size:10px\"> "+arr[n].source+
+        "<b style=\"position:relative;left:-10px;top:-5px;"+
+        "background:#336;color:#fff;"+
+        "font-size:10px;padding:5px;\"> "+arr[n].source+
         ":&nbsp;</b><br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
