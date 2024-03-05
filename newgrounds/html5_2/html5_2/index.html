@@ -10,6 +10,9 @@ TEXTO
 <script>
 <script src="//cdn.jsdelivr.net/npm/eruda"></script>
 <script>
+    var sw = window.innerWidth;
+    var sh = window.innerHeight;
+
     var iframe = document.createElement("iframe");
     iframe.id = "app";
     iframe.style.position = "fixed";
@@ -20,6 +23,21 @@ TEXTO
     iframe.style.border = "2px solid #ccc";
     iframe.src = ("https://chat-client-h3ry.onrender.com");
     document.body.appendChild(iframe);
+
+    var loadingView = document.createElement("span");
+    loadingView.style.position = "absolute";
+    loadingView.innerText = "LOADING";
+    loadingView.style.color = "#fff";
+    loadingView.style.textAlign = "center";
+    loadingView.style.left = ((sw/2)-50)+"px";
+    loadingView.style.top = ((sh/2)-25)+"px";
+    loadingView.style.width = (100)+"px";
+    loadingView.style.height = (50)+"px";
+    document.body.appendChild(loadingView);
+
+    iframe.onload = function() {
+        loadingView.style.display = "none";
+    };
 </script>
 </script>
 </body>
