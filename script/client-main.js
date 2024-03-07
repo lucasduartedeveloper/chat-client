@@ -276,7 +276,7 @@ $(document).ready(function() {
 
     loadHistory();
 
-    //eruda.destroy();
+    eruda.destroy();
 });
 
 var historyArr = [];
@@ -343,8 +343,10 @@ var drawHistory = function(arr) {
         "background:#336;color:#fff;"+
         "font-size:10px;padding:5px;\"> "+arr[n].source+
         ":&nbsp;</b>"+
-        //"&nbsp;<span style=\"position:relative;top:-5px;"+
-        //"font-size:10px;\"> Lv. "+level+"</span>"+
+        "&nbsp;<span style=\"position:absolute;top:5px;right:5px;"+
+        "font-size:10px;\">"+
+        formatTime(arr[n].timestamp)+
+        "</span>"+
         "<br>"+arr[n].text;
         //messageView.style.width = (sw)+"px";
         //messageView.style.height = (50)+"px";
@@ -357,6 +359,17 @@ var drawHistory = function(arr) {
     }
 
     historyView.scrollTo(0, historyView.scrollHeight);
+};
+
+var formatTime = function(time) {
+    var year = time.substring(0, 4);
+    var month = time.substring(5, 7);
+    var day = time.substring(8, 10);
+    var hours = time.substring(11, 13);
+    var minutes = time.substring(14, 16);
+    var seconds = time.substring(17, 19);
+
+    return day+"/"+month+"/"+year+" "+hours+":"+minutes+":"+seconds;
 };
 
 var send = function(from, text) {
