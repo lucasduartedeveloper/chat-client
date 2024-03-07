@@ -105,6 +105,19 @@ $(document).ready(function() {
     historyView.style.zIndex = "15";
     document.body.appendChild(historyView);
 
+    countView = document.createElement("span");
+    countView.style.position = "absolute";
+    countView.type = "text";
+    countView.innerText = "0 online";
+    countView.style.textAlign = "center";
+    countView.style.left = (sw-100)+"px";
+    countView.style.top = (sh-75)+"px";
+    countView.style.width = (100)+"px";
+    countView.style.height = (25)+"px";
+    countView.style.border = "1px solid #000";
+    countView.style.zIndex = "15";
+    document.body.appendChild(countView);
+
     var showNameField = true;
     nameChangeView = document.createElement("i");
     nameChangeView.style.position = "absolute";
@@ -228,6 +241,7 @@ $(document).ready(function() {
         });
     }, 60000);
 
+    var countTimeout = 0;
     ws.onmessage = function(e) {
         var msg = e.data.split("|");
         if (msg[0] == "PAPER" &&
@@ -235,11 +249,34 @@ $(document).ready(function() {
             msg[2] == "update") {
             loadHistory();
         }
+        else if (msg[0] == "PAPER" &&
+            msg[1] != playerId &&
+            msg[2] == "request-count") {
+            ws.send("PAPER|"+playerId+"|connected");
+        }
+        else if (msg[0] == "PAPER" &&
+            msg[1] != playerId &&
+            msg[2] == "connected") {
+            connectedCount += 1;
+        }
     };
+
+    var connectedCount = 0;
+    setInterval(function() {
+        connectedCount = 0;
+        ws.send("PAPER|"+playerId+"|request-count");
+
+        clearTimeout(countTimeout);
+        countTimeout = setTimeout(function() {
+            countView.innerText = connectedCount+" online";
+        }, 1000);
+    }, 5000);
+
+    ws.send("PAPER|"+playerId+"|request-count");
 
     loadHistory();
 
-    eruda.destroy();
+    //eruda.destroy();
 });
 
 var historyArr = [];
