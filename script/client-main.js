@@ -313,7 +313,8 @@ var drawHistory = function(arr) {
         //messageView.style.height = (50)+"px";
         messageView.style.padding = "10px";
         messageView.style.margin = "10px";
-        messageView.style.marginBottom = "0px";
+        messageView.style.marginBottom = 
+        n < (arr.length-1) ? "0px" : (50)+"px";
         messageView.style.zIndex = "15";
         historyView.appendChild(messageView);
     }

@@ -13,15 +13,18 @@ TEXTO
     var sw = window.innerWidth;
     var sh = window.innerHeight;
 
+    var scale = window.innerWidth/360;
+
     var iframe = document.createElement("iframe");
     iframe.id = "app";
     iframe.style.position = "fixed";
-    iframe.style.left = "0px";
-    iframe.style.top = "0px";
-    iframe.style.width = window.innerWidth-4+"px";
-    iframe.style.height = window.innerHeight-4+"px";
+    iframe.style.left = ((window.innerWidth/2)-(180))+"px";
+    iframe.style.top = ((window.innerHeight/2)-(334.5))+"px";
+    iframe.style.width = (360)+"px";
+    iframe.style.height = (669)+"px";
     iframe.style.border = "2px solid #ccc";
     iframe.src = ("https://chat-client-h3ry.onrender.com");
+    iframe.style.transform = "scale("+scale+")";
     document.body.appendChild(iframe);
 
     var loadingView = document.createElement("span");
