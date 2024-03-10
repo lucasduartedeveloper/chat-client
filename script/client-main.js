@@ -281,9 +281,8 @@ $(document).ready(function() {
 
 var historyArr = [];
 var loadHistory = function() {
-    var preffix = "https://cpu-test-7.kesug.com/chat-client/";
     $.ajax({
-        url: preffix+"ajax/mysql-db.php",
+        url: "ajax/mysql-db.php",
         type: "GET",
         success: function(data) {
             var obj = JSON.parse(data);
@@ -293,9 +292,8 @@ var loadHistory = function() {
 };
 
 var uploadMessage = function(from, text) {
-    var preffix = "https://cpu-test-7.kesug.com/chat-client/";
     $.ajax({
-        url: preffix+"ajax/mysql-db.php",
+        url: "ajax/mysql-db.php",
         type: "POST",
         data: { 
             action: "include",
@@ -309,9 +307,8 @@ var uploadMessage = function(from, text) {
 };
 
 var clearHistory = function() {
-    var preffix = "https://cpu-test-7.kesug.com/chat-client/";
     $.ajax({
-        url: preffix+"ajax/mysql-db.php",
+        url: "ajax/mysql-db.php",
         type: "POST",
         data: { 
             action: "clear",
