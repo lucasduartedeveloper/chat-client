@@ -1,18 +1,18 @@
 <?php
+/*
 //freemysqlhosting
 $host = "sql10.freemysqlhosting.net";
 $user = "sql10688200";
 $password = "ePfYtKWlz2";
 $dbname = "sql10688200";
-$port = "3306";
+$port = "3306";*/
 
-/*
 //MySQL
 $host = "sql305.infinityfree.com";
 $user = "if0_35033672";
 $password = "jC4vL41iznqJqc";
 $dbname = "if0_35033672_chat_history";
-$port = "3306";*/
+$port = "3306";
 
 try{
   //Set DSN data source name
