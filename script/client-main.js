@@ -276,7 +276,7 @@ $(document).ready(function() {
 
     loadHistory();
 
-    //eruda.destroy();
+    eruda.destroy();
 });
 
 var historyArr = [];
